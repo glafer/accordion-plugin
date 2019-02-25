@@ -1,0 +1,43 @@
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Accordion Plugin</title>
+    </head>
+
+    <body>
+        <div id="app"></div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var elem = document.getElementById('app');
+                let accordion = new Accordion(elem, [{
+                        title: 'Section 1',
+                        content: 'Section 1 Content...'
+                    },
+                    {
+                        title: 'Section 2',
+                        content: 'Section 2 Content...'
+                    },
+                    {
+                        title: 'Section 3',
+                        content: 'Section 3 Content...'
+                    },
+                ]);
+                accordion.init();
+
+                setTimeout(function () {
+                    accordion.addSection({
+                        title: 'Section 4',
+                        content: 'Section 4 Content...'
+                    });
+                }, 2000);
+            });
+
+        </script>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+
+</html>

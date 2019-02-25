@@ -8,49 +8,49 @@ export class Accordion {
         let dl = document.createElement('dl');
         dl.classList.add('accordion');
         this.dl = this.elem.appendChild(dl);
-        this.renderList();
-        this.loadEvents();
+        this._renderList();
+        this._loadEvents();
     }
 
-    loadEvents() {
+    _loadEvents() {
         this.elem.addEventListener('click', function (event) {
             if (event.target.tagName === 'DT') {
-                event.target.classList.toggle('open');
+                event.target.classList.toggle('is-open');
             }
         }, false);
     }
 
-    getDtElement(title) {
+    _getDtElement(title) {
         let dt = document.createElement('dt');
         dt.innerText = title;
         return dt;
     }
 
-    getDdElement(content) {
+    _getDdElement(content) {
         let dd = document.createElement('dd');
         dd.innerText = content;
         return dd;
     }
 
-    appendSectionToDt(dtElement, ddElement) {
+    _appendSectionToDt(dtElement, ddElement) {
         this.dl.appendChild(dtElement);
         this.dl.appendChild(ddElement);
     }
 
-    renderList() {
+    _renderList() {
         let sections = this.sections.map(element => {
             return {
-                dt: this.getDtElement(element.title),
-                dd: this.getDdElement(element.content)
+                dt: this._getDtElement(element.title),
+                dd: this._getDdElement(element.content)
             }
         })
         for (let section of sections) {
-            this.appendSectionToDt(section.dt, section.dd);
+            this._appendSectionToDt(section.dt, section.dd);
 
         }
     }
 
     addSection(section) {
-        this.appendSectionToDt(this.getDtElement(section.title), this.getDdElement(section.content));
+        this._appendSectionToDt(this._getDtElement(section.title), this._getDdElement(section.content));
     }
 }

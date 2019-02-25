@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.accordion {
+    font-family: 'Roboto', sans-serif;
+
+    dt {
+        background: #cccccc;
+        color: #ffffff;
+        padding: 10px;
+        font-weight: 600;
+        position: relative;
+        text-align: left;
+        text-transform: uppercase;
+        transition: all .5s;
+        cursor: pointer;
+
+        &:first-child {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+    }
+
+    dt:last-of-type:not(.is-open), dd:last-child {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    dd {
+        background: #f3f3f3;
+        color: #777b6b;
+        margin: 0;
+        overflow: hidden;
+        padding: 1px 15px;
+        height: 0;
+    }
+
+    dt.is-open {
+        background: #0E0C0D;
+        border-color: #0E0C0D;
+        color: #edeff3;
+    }
+
+    dt.is-open+dd {
+        display: block;
+        height: auto;
+        padding: 15px;
+    }
+
+} 

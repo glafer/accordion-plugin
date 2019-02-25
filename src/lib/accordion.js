@@ -1,7 +1,8 @@
 export class Accordion {
-    constructor(elem, sections) {
+    constructor(elem, sections, options) {
         this.elem = elem;
         this.sections = sections;
+        this.options = options || {};
     }
 
     init() {
@@ -13,8 +14,13 @@ export class Accordion {
     }
 
     _loadEvents() {
-        this.elem.addEventListener('click', function (event) {
+        this.elem.addEventListener('click', (event) => {
             if (event.target.tagName === 'DT') {
+                if (typeof this.options.singleOpen === 'boolean' && this.options.singleOpen) {
+                    Array.from(this.elem.getElementsByTagName('dt')).forEach( element => {
+                        event.target != element && element.classList.remove('is-open');
+                    });
+                }
                 event.target.classList.toggle('is-open');
             }
         }, false);
